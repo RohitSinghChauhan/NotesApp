@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 async function signup(payload) {
-    const res = await axios.post(`https://notesapp-api-ygsd.onrender.com/user/signup`, payload);
+    const res = await axios.post(`${process.env.REACT_APP_DB_URL}/user/signup`, payload);
     return res;
 };
 

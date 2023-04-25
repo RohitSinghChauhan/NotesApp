@@ -4,7 +4,6 @@ import { Button, Flex, Text, FormControl, Input, Spinner, useToast } from '@chak
 import { Alert, AlertIcon, AlertTitle, AlertDescription, } from '@chakra-ui/react'
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const initFormData = {
     email: '',
@@ -29,7 +28,7 @@ const Signup = () => {
 
         if (formData.email !== '' && formData.password !== '') {
             setLoading(true);
-            axios.post(`https://notesapp-api-ygsd.onrender.com/user/signup`, formData)
+            axios.post(`${process.env.REACT_APP_DB_URL}/user/signup`, formData)
                 .then(res => {
                     setLoading(false)
 

@@ -24,7 +24,7 @@ const Notes = () => {
 
         setLoading(true);
 
-        fetch(`https://notesapp-api-ygsd.onrender.com/notes/update/${_id}`, {
+        fetch(`${process.env.REACT_APP_DB_URL}/notes/update/${_id}`, {
             method: 'PATCH',
             body: JSON.stringify(noteToUpdate),
             headers: {
@@ -53,7 +53,7 @@ const Notes = () => {
     function handleDelete(id) {
         setLoading(true);
 
-        axios.delete(`https://notesapp-api-ygsd.onrender.com/notes/delete/${id}`, {
+        axios.delete(`${process.env.REACT_APP_DB_URL}/notes/delete/${id}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }

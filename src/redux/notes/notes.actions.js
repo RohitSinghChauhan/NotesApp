@@ -5,7 +5,7 @@ export const getNotes = () => async (dispatch) => {
     dispatch({ type: REQUEST_NOTES });
 
     try {
-        const res = await axios.get('https://notesapp-api-ygsd.onrender.com/notes', {
+        const res = await axios.get(`${process.env.REACT_APP_DB_URL}/notes`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -19,10 +19,11 @@ export const getNotes = () => async (dispatch) => {
 };
 
 export const createNote = (note) => async (dispatch) => {
-    await axios.post(`https://notesapp-api-ygsd.onrender.com/notes/create`, note, {
+    await axios.post(`${process.env.REACT_APP_DB_URL}/notes/create`, note, {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
     });
     dispatch({ type: CREATE_NOTE });
+    dispatch(getNotes());
 };

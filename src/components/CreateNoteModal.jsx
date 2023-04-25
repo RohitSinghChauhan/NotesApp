@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Textarea, useDisclosure } from "@chakra-ui/react";
 import { useDispatch } from "react-redux";
-import { createNote, getNotes } from '../redux/notes/notes.actions';
+import { createNote } from '../redux/notes/notes.actions';
 
 const initFormData = {
     title: '',
@@ -33,7 +33,6 @@ function CreateNoteModal() {
         setFormData(initFormData);
 
         onClose();
-        dispatch(getNotes());
     }
 
     return (
