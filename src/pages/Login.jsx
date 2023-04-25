@@ -43,18 +43,19 @@ const Login = () => {
 
     return (
         <Flex h='100vh' direction={['column', 'column', 'row', 'row']} justifyContent={'space-between'} alignItems={'center'}>
-            <Flex h='100%' w={['98%', '98%', '60%', '60%']} direction='column' gap={['1.6rem', '1.6rem', '1.6rem', '1.6rem']} justifyContent='center' alignItems='center'>
+            <Flex bgImage='url(https://cdn.dribbble.com/userupload/3718455/file/original-d72e75b18103b3f189196430c68d0af8.png?compress=1&resize=1200x901)'
+                h='100%' w={['98%', '98%', '60%', '60%']} direction='column' gap={['1.6rem', '1.6rem', '1.6rem', '1.6rem']} justifyContent='center' alignItems='center'>
                 {loading && <Spinner color='red.500' />}
                 {!loading && <>
-                    <Text fontSize={['1.6rem', '2.5rem', '3rem', '3.2rem']}>Login to your account</Text>
+                    <Text fontSize={['1.6rem', '2.5rem', '3rem', '3.2rem']} color='blackAlpha.700'>Login to your account</Text>
                     <Flex w={['98%', '80%', '90%', '60%']} direction='column' gap={['1rem', '1rem', '1rem', '1rem']}>
                         <FormControl>
-                            <Input name='email' type='email' value={formData.email} onChange={handleChange} placeholder='Enter email' />
+                            <Input name='email' type='email' value={formData.email} onChange={handleChange} bgColor='whitesmoke' placeholder='Enter email' />
                         </FormControl>
                         <FormControl>
-                            <Input name='password' type='password' value={formData.password} onChange={handleChange} placeholder='Enter password' />
+                            <Input name='password' type='password' value={formData.password} onChange={handleChange} bgColor='whitesmoke' placeholder='Enter password' />
                         </FormControl>
-                        <Button onClick={handleSubmit} bgColor='blackAlpha.800' colorScheme='green' color='whitesmoke'>Log In</Button>
+                        <Button onClick={handleSubmit} bgColor='blackAlpha.700' colorScheme='green' color='whitesmoke'>Log In</Button>
                     </Flex></>}
                 {error && <Alert w={['95%', '90%', '90%', '90%']} status='error'>
                     <AlertIcon />
