@@ -80,7 +80,7 @@ const Notes = () => {
         <>
             <Navbar />
 
-            <Flex direction='column' m='auto' h={['90vh', '90vh', '90vh', '90vh']} w={['95vw', '95vw', '95vw', '95vw']} gap={['1rem', '1rem', '1rem', '1rem']} alignItems='center'>
+            <Flex bgImage='https://images.unsplash.com/photo-1490598000245-075175152d25?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' bgPosition='center' direction='column' m='auto' h={['90vh', '90vh', '90vh', '90vh']} w={['95vw', '95vw', '95vw', '95vw']} gap={['1rem', '1rem', '1rem', '1rem']} alignItems='center'>
                 <Box mt={['.8rem', '.8rem', '.8rem', '1rem']}>
                     <CreateNoteModal />
                 </Box>
@@ -90,7 +90,7 @@ const Notes = () => {
                 {!loading &&
                     <SimpleGrid columns={['1', '2', '3', '3']} spacing={4} w={['100%', '100%', '100%', '100%']}>
                         {notes?.map((item) => (
-                            <Flex key={item._id} gap={['1.2rem']} direction='column' boxShadow='rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset' p='1rem' justifyContent='space-between' alignItems='center'>
+                            <Flex key={item._id} bgColor='white' gap={['1.2rem']} direction='column' boxShadow='rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset' p='1rem' justifyContent='space-between' alignItems='center'>
                                 <Box p='.2rem' bgColor='green.300' color='white'>
                                     <Text>Public</Text>
                                 </Box>

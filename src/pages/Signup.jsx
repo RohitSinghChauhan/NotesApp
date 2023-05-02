@@ -33,7 +33,7 @@ const Signup = () => {
                     setLoading(false)
 
                     toast({
-                        title: 'Signed up successfully!',
+                        title: 'Signed up successfully, Please Login now !',
                         description: "",
                         status: 'success',
                         duration: 2000,
@@ -58,11 +58,11 @@ const Signup = () => {
         <>
             <Navbar />
 
-            <Flex h='92vh' w={['100%', '100%', '100%', '100%']} direction='column' gap={['1.6rem', '1.6rem', '1.6rem', '1.6rem']} justifyContent='center' alignItems='center'>
+            <Flex bgImage='https://images.unsplash.com/photo-1490598000245-075175152d25?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80' bgPosition='center' h='92vh' w={['100%', '100%', '100%', '100%']} direction='column' gap={['1.6rem', '1.6rem', '1.6rem', '1.6rem']} justifyContent='center' alignItems='center'>
 
-                {loading ? <Spinner color='red.500' /> :
+                {loading ? <><Text as='b' >Please wait...</Text><Spinner color='red.500' /></> :
                     <>
-                        <Text fontSize={['1.6rem', '2.5rem', '3rem', '3.2rem']}>Create your account now</Text>
+                        <Text fontSize={['1.6rem', '2.5rem', '3rem', '3.2rem']} color='white' >Create your account now</Text>
                         <Flex w={['60%', '60%', '50%', '50%']} direction='column' gap={['1rem', '1rem', '1rem', '1rem']}>
                             <FormControl>
                                 <Input name='email' type='email' value={formData.email} onChange={handleChange} placeholder='Enter email' />
