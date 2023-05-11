@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Flex, SimpleGrid, Text, Button, Spacer, Spinner, useToast } from '@chakra-ui/react';
+import { Box, Flex, SimpleGrid, Text, Button, Spacer, Spinner, useToast, Alert, AlertIcon } from '@chakra-ui/react';
 import Navbar from '../components/Navbar';
 import { useSelector, useDispatch } from 'react-redux';
 import { getNotes } from '../redux/notes/notes.actions';
@@ -87,7 +87,11 @@ const Notes = () => {
 
                 {loading && <Flex w='100vw' h='100vh' justifyContent='center' alignItems='center'><Spinner color='red.500' /></Flex>}
 
-                {!loading &&
+                {!loading && <>
+                    <Alert status='warning' h='2vh' w='auto' fontSize='.9rem'>
+                        <AlertIcon />
+                        You can only Edit/Delete your own notes.
+                    </Alert>
                     <SimpleGrid columns={['1', '2', '3', '3']} spacing={4} w={['100%', '100%', '100%', '100%']}>
                         {notes?.map((item) => (
                             <Flex key={item._id} bgColor='white' gap={['1.2rem']} direction='column' boxShadow='rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset' p='1rem' justifyContent='space-between' alignItems='center'>
@@ -100,19 +104,19 @@ const Notes = () => {
                                     <Spacer />
                                     <Text as='i'>{item.note}</Text>
                                 </Box>
-                                <Flex gap={['1rem', '1rem', '1rem', '1.5rem']}>
 
+                                <Flex gap={['1rem', '1rem', '1rem', '1.5rem']}>
                                     <EditNoteModal handleEdit={(formData) => {
                                         const noteToUpdate = { ...formData, _id: item._id, userID: item.userID }
                                         handleEdit(noteToUpdate)
                                     }} />
 
                                     <DeleteAlert handleDelete={() => handleDelete(item._id)} />
-
                                 </Flex>
                             </Flex>
                         ))}
-                    </SimpleGrid>}
+                    </SimpleGrid>
+                </>}
             </Flex>
         </>
     )
