@@ -28,31 +28,41 @@ const Signup = () => {
 
         if (formData.email !== '' && formData.password !== '') {
             setLoading(true);
-            axios.post(`${process.env.REACT_APP_DB_URL}/user/signup`, formData)
+
+            // Construct the query string
+            const queryParams = new URLSearchParams({
+                email: formData.email,
+                password: formData.password
+            }).toString();
+
+            // Update the URL to include the query parameters
+            const url = `${process.env.REACT_APP_DB_URL}/user/signup?${queryParams}`;
+
+            axios.post(url)
                 .then(res => {
-                    setLoading(false)
+                    setLoading(false);
 
                     toast({
-                        title: 'Signed up successfully, Please Login now !',
+                        title: 'Signed up successfully, Please Login now!',
                         description: "",
                         status: 'success',
                         duration: 2000,
                         isClosable: true,
-                    })
+                    });
 
                     navigate('/');
                 })
                 .catch(err => {
-                    setLoading(false)
-                    setError(true)
-                    console.log(err)
+                    setLoading(false);
+                    setError(true);
+                    console.log(err);
                 });
         } else {
             alert('Please fill up the fields!');
-        };
+        }
 
         setFormData(initFormData);
-    }
+    };
 
     return (
         <>
