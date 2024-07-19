@@ -36,7 +36,8 @@ const Signup = () => {
             }).toString();
 
             // Update the URL to include the query parameters
-            const url = `${process.env.REACT_APP_DB_URL}/user/signup?${queryParams}`;
+            const url = `https://notesapp-api-ygsd.onrender.com/user/signup?${queryParams}`;
+            console.log('URL=', url);
 
             axios.post(url)
                 .then(res => {
