@@ -8,6 +8,8 @@ import CreateNoteModal from '../components/CreateNoteModal';
 import EditNoteModal from '../components/EditNoteModal';
 import DeleteAlert from '../components/DeleteAlert';
 
+let api = 'https://notesapp-api-ygsd.onrender.com';
+
 const Notes = () => {
     const [loading, setLoading] = useState(false);
     const toast = useToast();
@@ -24,7 +26,7 @@ const Notes = () => {
 
         setLoading(true);
 
-        fetch(`${process.env.REACT_APP_DB_URL}/notes/update/${_id}`, {
+        fetch(`${api}/notes/update/${_id}`, {
             method: 'PATCH',
             body: JSON.stringify(noteToUpdate),
             headers: {
@@ -53,7 +55,7 @@ const Notes = () => {
     function handleDelete(id) {
         setLoading(true);
 
-        axios.delete(`${process.env.REACT_APP_DB_URL}/notes/delete/${id}`, {
+        axios.delete(`${api}/notes/delete/${id}`, {
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
